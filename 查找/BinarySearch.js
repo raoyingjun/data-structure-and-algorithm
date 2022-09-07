@@ -1,7 +1,7 @@
 /**
  * @param {number[]} arr 有序数组
  * @param  {number} element 要查找的元素
- * @return {Number | -1} 返回查找到的元素对应索引
+ * @return {number | -1} 返回查找到的元素对应索引
  */
 function binarySearch(arr, element) {
     let low = 0,
