@@ -5,7 +5,7 @@ function shellSort(arr) {
         gap > 0; // gap如果等于0，则说明排序完序了
         gap = Math.floor(gap / 2)) { // 缩小增量。每次gap缩小为上次的一半
         for (let i = gap; i < len; i++) {// 比对每个gap区间，从gap位置开始，向后开始递增，直到数组末尾
-            for (let j = i - gap; j >= 0;  j = j - gap) { // 这里的话跟插入排序思想一样
+            for (let j = i - gap; j >= 0;  j = j - gap) { // 这里的话跟插入排序思想的逻辑类似
                 if (arr[j] > arr[j + gap]) { // 如果当前这个元素大于当前间隔的后面那个元素，则交换
                     let tmp = arr[j]
                     arr[j] = arr[j + gap]
