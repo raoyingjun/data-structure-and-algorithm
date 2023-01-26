@@ -1,27 +1,27 @@
-function adjustPartition(arr, low, high) {
-    if (low < high) { // 因为以基准索引进行分区，分区最后越来越小，最后low等于high则是递归出口
-        const mid = sort(arr, low, high) // 基准值的索引，以该值继续进行左右分区
-        adjustPartition(arr, low, mid) // 参照基准值分出左区间
-        adjustPartition(arr, mid + 1, high) // 参照基准值分出右区间
+function adjustPartition(arr, left, right) {
+    if (left < right) { // 因为以基准索引进行分区，分区最后越来越小，最后left等于right则是递归出口
+        const mid = sort(arr, left, right) // 基准值的索引，以该值继续进行左右分区
+        adjustPartition(arr, left, mid) // 参照基准值分出左区间
+        adjustPartition(arr, mid + 1, right) // 参照基准值分出右区间
     }
 }
 
-function sort(arr, low, high) {
-    const pivot = arr[low] // 记录当前基准值
-    while (low < high) { // 如果low>=high则说明已经定位到了当前基准元素应该存放的位置
+function sort(arr, left, right) {
+    const pivot = arr[left] // 记录当前基准值
+    while (left < right) { // 如果left>=right则说明已经定位到了当前基准元素应该存放的位置
         while (
-            (low < high)
+            (left < right)
             &&
-            (arr[high] >= pivot)) high-- // 没有找到小于基准值的值
-        if (low < high) arr[low++] = arr[high] // 找到小于基准值的值，放在左边
+            (arr[right] >= pivot)) right-- // 没有找到小于基准值的值
+        if (left < right) arr[left++] = arr[right] // 找到小于基准值的值，放在左边
         while (
-            (low < high)
+            (left < right)
             &&
-            (arr[low] <= pivot)) low++ // 没有找到大于基准值的值
-        if (low < high) arr[high--] = arr[low] // 找到了大于基准值的值，放在右边
+            (arr[left] <= pivot)) left++ // 没有找到大于基准值的值
+        if (left < right) arr[right--] = arr[left] // 找到了大于基准值的值，放在右边
     }
-    arr[low] = pivot // 定位基准元素应该存放的位置
-    return low // 返回当前基准值，给分区作为参考
+    arr[left] = pivot // 定位基准元素应该存放的位置
+    return left // 返回当前基准值，给分区作为参考
 }
 
 function quickSort(arr) {
