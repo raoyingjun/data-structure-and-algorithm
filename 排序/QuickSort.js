@@ -1,12 +1,12 @@
-function adjustPartition(arr, left, right) {
+function dividePartition(arr, left, right) {
     if (left < right) { // 因为以基准索引进行分区，分区最后越来越小，最后left等于right则是递归出口
-        const mid = sort(arr, left, right) // 基准值的索引，以该值继续进行左右分区
-        adjustPartition(arr, left, mid) // 参照基准值分出左区间
-        adjustPartition(arr, mid + 1, right) // 参照基准值分出右区间
+        const mid = adjustPartition(arr, left, right) // 基准值的索引，以该值继续进行左右分区
+        dividePartition(arr, left, mid) // 参照基准值分出左区间
+        dividePartition(arr, mid + 1, right) // 参照基准值分出右区间
     }
 }
 
-function sort(arr, left, right) {
+function adjustPartition(arr, left, right) {
     const pivot = arr[left] // 记录当前基准值
     while (left < right) { // 如果left>=right则说明已经定位到了当前基准元素应该存放的位置
         while (
@@ -25,7 +25,7 @@ function sort(arr, left, right) {
 }
 
 function quickSort(arr) {
-    adjustPartition(arr, 0, arr.length - 1)
+    dividePartition(arr, 0, arr.length - 1)
 }
 
 const arr = [7, 3, 1, 9, 4, 8]
