@@ -14,7 +14,7 @@ function merge(arr, left, mid, right) {
     // 同样，判断右边是否还有多的，有的话入队
     while (r <= right) tmpArr[tmpPos++] = arr[r++];
     // 最后左边区间和右边区间合并到一起
-    for (let i = 0, len = tmpArr.length; i < len; i++) {
+    for (let i = 0, len = tmpPos; i < len; i++) {
         // 合并的位置是从是从索引left开始的
         arr[left + i] = tmpArr[i]
     }
